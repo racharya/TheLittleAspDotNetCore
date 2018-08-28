@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <UserSecretsId>aspnet-AspNetCoreTodo-E4657E55-47A5-48BF-8540-C6C0322AC337</UserSecretsId>
+    <UserSecretsId>aspnet-AspNetCoreTodo-98AA5B11-594D-45FE-A161-BCB27805CE39</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
