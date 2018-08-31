@@ -44,6 +44,9 @@ namespace AspNetCoreTodo
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // Use FakeTodoItemService whenever ITodoItemService interface is requested.
+            // AddSingleton adds the service to the service container as a singleton.
+            // Example of dependency injection because we are injecting a service from the service container.
             services.AddSingleton<ITodoItemService, FakeTodoItemService>();
         }
 
