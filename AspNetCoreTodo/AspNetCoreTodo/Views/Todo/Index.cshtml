@@ -1,7 +1,7 @@
 @model TodoViewModel
 
 @{
-    ViewData["Title"] = "Manage your todo list";
+    ViewData["Title"] = "My todo list";
 }
 
 <div class="panel panel-default todo-panel">
@@ -10,7 +10,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <td>>&#x2714;</td>
+                <td>&#x2714;</td>
                 <td>Item</td>
                 <td>Due</td>
             </tr>
@@ -22,8 +22,8 @@
                 <td>
                     <input type="checkbox" class="done-checkbox">
                 </td>
-                <td>item.Title</td>
-                <td>item.DueAt</td>
+                <td>@item.Title</td>
+                <td>@item.DueAt</td>
             </tr>
         }
     </table>
