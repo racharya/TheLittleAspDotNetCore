@@ -15,9 +15,9 @@ namespace AspNetCoreTodo.Controllers
     {
         private readonly ITodoItemService _todoItemService;
 
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public TodoController(ITodoItemService todoItemService, UserManager<IdentityUser> userManager)
+        public TodoController(ITodoItemService todoItemService, UserManager<ApplicationUser> userManager)
         {
             _todoItemService = todoItemService;
             _userManager = userManager;
@@ -47,8 +47,10 @@ namespace AspNetCoreTodo.Controllers
             {
                 return RedirectToAction("Index");
             }
+            var currentUser = await _userManager.GetUserAsync(User);
+            if(currentUser == null) return Challenge();
 
-            var successful = await _todoItemService.AddItemAsync(newItem);
+            var successful = await _todoItemService.AddItemAsync(newItem, currentUser);
             if(!successful){
                 return BadRequest("Could not add item.");
             }
@@ -62,7 +64,11 @@ namespace AspNetCoreTodo.Controllers
             {
                 return RedirectToAction("Index");
             }
-            var successful = await _todoItemService.MarkDoneAsync(id);
+
+            var currentUser = await _userManager.GetUserAsync(User);
+            if(currentUser == null) return Challenge();
+
+            var successful = await _todoItemService.MarkDoneAsync(id, currentUser);
             if (!successful)
             {
                 return BadRequest("Could not mark item as done.");
