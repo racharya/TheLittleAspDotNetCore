@@ -16,7 +16,7 @@ namespace AspNetCoreTodo.Services
         {
             _context = context;
         }
-        public async Task<TodoItem[]> GetIncompleteItemAsync(ApplicationUser user)
+        public async Task<TodoItem[]> GetIncompleteItemAsync(IdentityUser user)
         {
             return await _context.Items.Where(x => x.IsDone == false).ToArrayAsync();
         }
