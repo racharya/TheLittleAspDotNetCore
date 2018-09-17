@@ -45,9 +45,9 @@ namespace AspNetCoreTodo
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+        
+            services.AddTransient<IEmailSender, EmailSender>();
+            
             // Use FakeTodoItemService whenever ITodoItemService interface is requested.
             // AddSingleton adds the service to the service container as a singleton.
             // Example of dependency injection because we are injecting a service from the service container.
@@ -56,6 +56,8 @@ namespace AspNetCoreTodo
             // Addscoped = scoped lifecycle. A new instance of the TodoItemServices is created during each web request.
             // It is required for service class that interacts with a database with Entity Framework Core.
             services.AddScoped<ITodoItemService, TodoItemService>();
+            services.AddAuthentication();            
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
