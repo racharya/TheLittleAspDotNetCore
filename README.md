@@ -1,5 +1,5 @@
 ##### INTRODUCTION
-    This application is a simple todo list created using ASP.NET CORE MVC. 
+    This application is a simple todo list creator/maintainer for a user developed using ASP.NET CORE MVC. 
 
 ##### REQUIRED FILES
     - AspNetCoreTodo - The main application file containing subfiles required to run the application.
